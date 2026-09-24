@@ -1,0 +1,4193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Nossos momentos 🤍</title>
+
+
+    <!-- ==================================================
+         FAVICON — CORAÇÃO ROSA
+    =================================================== -->
+
+    <link
+        rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%97%3C/text%3E%3C/svg%3E"
+    >
+
+
+    <!-- ==================================================
+         FONTES
+    =================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =================================================
+           VARIÁVEIS
+        ================================================= */
+
+        :root {
+
+            --pink: #ff4f87;
+
+            --pink-light: #ffb6ca;
+
+            --pink-soft: #fff0f4;
+
+            --black: #080808;
+
+            --black-soft: #151515;
+
+            --white: #ffffff;
+
+            --gray: #888888;
+
+            /* Cor da referência da Miku */
+            --miku: #39d9d0;
+
+        }
+
+
+        /* =================================================
+           RESET
+        ================================================= */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        body {
+
+            background:
+                var(--pink-soft);
+
+            color:
+                var(--black);
+
+            font-family:
+                'Montserrat',
+                sans-serif;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =================================================
+           TELA DE ABERTURA
+        ================================================= */
+
+        .opening {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #1c1c1c 0%,
+                    #080808 72%
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            transition:
+                opacity 1s ease,
+                visibility 1s ease;
+
+            overflow-y: auto;
+
+            padding: 30px;
+
+        }
+
+
+        .opening.hidden {
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+
+        }
+
+
+        .opening-content {
+
+            width: 100%;
+
+            max-width: 700px;
+
+        }
+
+
+        .opening-heart {
+
+            font-size: 78px;
+
+            color:
+                var(--pink);
+
+            animation:
+                heartbeat 1.5s infinite;
+
+            filter:
+                drop-shadow(
+                    0 0 25px
+                    rgba(
+                        255,
+                        79,
+                        135,
+                        .5
+                    )
+                );
+
+            margin-bottom: 20px;
+
+        }
+
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1);
+
+            }
+
+            15% {
+
+                transform:
+                    scale(1.15);
+
+            }
+
+            30% {
+
+                transform:
+                    scale(1);
+
+            }
+
+            45% {
+
+                transform:
+                    scale(1.12);
+
+            }
+
+            60% {
+
+                transform:
+                    scale(1);
+
+            }
+
+        }
+
+
+        .opening-small {
+
+            color:
+                var(--pink);
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                5px;
+
+            font-size:
+                10px;
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .opening h1 {
+
+            color:
+                white;
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(
+                    50px,
+                    9vw,
+                    90px
+                );
+
+            line-height:
+                .9;
+
+            margin-bottom:
+                25px;
+
+        }
+
+
+        .opening h1 span {
+
+            color:
+                var(--pink);
+
+            font-style:
+                italic;
+
+        }
+
+
+        .opening-date {
+
+            color:
+                #aaa;
+
+            font-size:
+                12px;
+
+            margin-bottom:
+                35px;
+
+        }
+
+
+        .open-button {
+
+            border:
+                none;
+
+            background:
+                var(--pink);
+
+            color:
+                white;
+
+            padding:
+                15px 32px;
+
+            border-radius:
+                50px;
+
+            cursor:
+                pointer;
+
+            font-family:
+                'Montserrat',
+                sans-serif;
+
+            font-weight:
+                600;
+
+            transition:
+                .3s;
+
+        }
+
+
+        .open-button:hover {
+
+            background:
+                white;
+
+            color:
+                black;
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        /* =================================================
+           MENSAGEM ESPECIAL
+        ================================================= */
+
+        .special-message {
+
+            color:
+                #ddd;
+
+            font-size:
+                14px;
+
+            line-height:
+                2;
+
+            max-width:
+                640px;
+
+            margin:
+                0 auto 30px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .special-message strong {
+
+            color:
+                var(--pink-light);
+
+        }
+
+
+        /* =================================================
+           CORAÇÕES FLUTUANTES
+        ================================================= */
+
+        .hearts {
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            pointer-events:
+                none;
+
+            overflow:
+                hidden;
+
+            z-index:
+                0;
+
+        }
+
+
+        .heart {
+
+            position:
+                absolute;
+
+            color:
+                rgba(
+                    255,
+                    79,
+                    135,
+                    .16
+                );
+
+            animation:
+                floatHeart
+                12s
+                linear
+                infinite;
+
+        }
+
+
+        @keyframes floatHeart {
+
+            from {
+
+                transform:
+                    translateY(110vh)
+                    rotate(0deg);
+
+                opacity:
+                    0;
+
+            }
+
+            20% {
+
+                opacity:
+                    1;
+
+            }
+
+            to {
+
+                transform:
+                    translateY(-10vh)
+                    rotate(360deg);
+
+                opacity:
+                    0;
+
+            }
+
+        }
+
+
+        /* =================================================
+           NAVEGAÇÃO
+        ================================================= */
+
+        nav {
+
+            position:
+                fixed;
+
+            top:
+                0;
+
+            left:
+                0;
+
+            width:
+                100%;
+
+            padding:
+                18px 6%;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            z-index:
+                1000;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .88
+                );
+
+            backdrop-filter:
+                blur(18px);
+
+            border-bottom:
+                1px solid
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .08
+                );
+
+        }
+
+
+        .logo {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                32px;
+
+            font-weight:
+                700;
+
+            color:
+                black;
+
+        }
+
+
+        .logo span {
+
+            color:
+                var(--pink);
+
+        }
+
+
+        nav ul {
+
+            display:
+                flex;
+
+            gap:
+                30px;
+
+            list-style:
+                none;
+
+        }
+
+
+        nav a {
+
+            color:
+                black;
+
+            text-decoration:
+                none;
+
+            font-size:
+                12px;
+
+            font-weight:
+                600;
+
+            transition:
+                .3s;
+
+        }
+
+
+        nav a:hover {
+
+            color:
+                var(--pink);
+
+        }
+
+
+        /* =================================================
+           PLAYER DE MÚSICA
+        ================================================= */
+
+        .music-player {
+
+            position:
+                fixed;
+
+            right:
+                25px;
+
+            bottom:
+                25px;
+
+            z-index:
+                2000;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+            background:
+                rgba(
+                    8,
+                    8,
+                    8,
+                    .94
+                );
+
+            color:
+                white;
+
+            padding:
+                9px 10px 9px 14px;
+
+            border-radius:
+                50px;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    79,
+                    135,
+                    .3
+                );
+
+            box-shadow:
+                0 15px 40px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .25
+                );
+
+            backdrop-filter:
+                blur(15px);
+
+            transition:
+                .35s;
+
+        }
+
+
+        .music-player:hover {
+
+            border-color:
+                var(--pink);
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        .music-info {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+        }
+
+
+        .music-disc {
+
+            width:
+                38px;
+
+            height:
+                38px;
+
+            border-radius:
+                50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--pink),
+                    #ff9fbc
+                );
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            color:
+                white;
+
+            font-size:
+                15px;
+
+        }
+
+
+        .music-text {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                2px;
+
+        }
+
+
+        .music-text strong {
+
+            color:
+                white;
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                1px;
+
+        }
+
+
+        .music-text span {
+
+            color:
+                #999;
+
+            font-size:
+                8px;
+
+        }
+
+
+        .music-button {
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            border-radius:
+                50%;
+
+            border:
+                none;
+
+            background:
+                var(--pink);
+
+            color:
+                white;
+
+            cursor:
+                pointer;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-size:
+                12px;
+
+            transition:
+                .3s;
+
+        }
+
+
+        .music-button:hover {
+
+            background:
+                white;
+
+            color:
+                var(--pink);
+
+            transform:
+                scale(1.08);
+
+        }
+
+
+        .music-playing .music-disc {
+
+            animation:
+                musicRotate
+                4s
+                linear
+                infinite;
+
+        }
+
+
+        .music-playing {
+
+            border-color:
+                var(--pink);
+
+        }
+
+
+        @keyframes musicRotate {
+
+            from {
+
+                transform:
+                    rotate(0deg);
+
+            }
+
+            to {
+
+                transform:
+                    rotate(360deg);
+
+            }
+
+        }
+
+
+        /* =================================================
+           HERO
+        ================================================= */
+
+        .hero {
+
+            min-height:
+                100vh;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            padding:
+                120px 20px 80px;
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(
+                        255,
+                        79,
+                        135,
+                        .15
+                    ),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(
+                        57,
+                        217,
+                        208,
+                        .10
+                    ),
+                    transparent 30%
+                );
+
+        }
+
+
+        .hero-content {
+
+            max-width:
+                900px;
+
+        }
+
+
+        .small-title {
+
+            color:
+                var(--pink);
+
+            font-size:
+                12px;
+
+            letter-spacing:
+                5px;
+
+            text-transform:
+                uppercase;
+
+            margin-bottom:
+                20px;
+
+        }
+
+
+        .hero h1 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(
+                    65px,
+                    10vw,
+                    120px
+                );
+
+            line-height:
+                .82;
+
+            color:
+                black;
+
+            margin-bottom:
+                35px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .hero h1 span {
+
+            color:
+                var(--pink);
+
+            font-style:
+                italic;
+
+        }
+
+
+        .hero-description {
+
+            max-width:
+                620px;
+
+            margin:
+                auto;
+
+            line-height:
+                1.9;
+
+            color:
+                #666;
+
+            font-size:
+                14px;
+
+        }
+
+
+        .scroll {
+
+            margin-top:
+                55px;
+
+            color:
+                var(--pink);
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                3px;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        /* =================================================
+           CONTADOR
+        ================================================= */
+
+        .counter-section {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            padding:
+                110px 6%;
+
+            background:
+                white;
+
+        }
+
+
+        .section-title {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                55px;
+
+        }
+
+
+        .section-title small {
+
+            color:
+                var(--pink);
+
+            letter-spacing:
+                4px;
+
+            text-transform:
+                uppercase;
+
+            font-size:
+                10px;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .section-title h2 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            color:
+                black;
+
+            font-size:
+                56px;
+
+            margin-top:
+                8px;
+
+        }
+
+
+        .counter {
+
+            max-width:
+                1050px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    5,
+                    1fr
+                );
+
+            gap:
+                15px;
+
+        }
+
+
+        .counter-box {
+
+            background:
+                var(--pink-soft);
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    79,
+                    135,
+                    .15
+                );
+
+            padding:
+                30px 15px;
+
+            text-align:
+                center;
+
+            border-radius:
+                18px;
+
+            transition:
+                .3s;
+
+        }
+
+
+        .counter-box:hover {
+
+            transform:
+                translateY(-5px);
+
+        }
+
+
+        .counter-number {
+
+            display:
+                block;
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                52px;
+
+            font-weight:
+                700;
+
+            color:
+                black;
+
+        }
+
+
+        .counter-label {
+
+            font-size:
+                9px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                2px;
+
+            color:
+                var(--pink);
+
+        }
+
+
+        .date-start {
+
+            text-align:
+                center;
+
+            margin-top:
+                35px;
+
+            color:
+                #777;
+
+            font-size:
+                13px;
+
+        }
+
+
+        /* =================================================
+           MOMENTOS
+        ================================================= */
+
+        .moments {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            padding:
+                110px 6%;
+
+        }
+
+
+        .moments-container {
+
+            max-width:
+                1150px;
+
+            margin:
+                auto;
+
+        }
+
+
+        /* =================================================
+           FORMULÁRIO
+        ================================================= */
+
+        .add-box {
+
+            position:
+                relative;
+
+            background:
+                var(--black);
+
+            color:
+                white;
+
+            border-radius:
+                28px;
+
+            padding:
+                40px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .15
+                );
+
+            margin-bottom:
+                65px;
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .add-box::after {
+
+            content:
+                "♡";
+
+            position:
+                absolute;
+
+            right:
+                35px;
+
+            top:
+                15px;
+
+            font-size:
+                110px;
+
+            color:
+                rgba(
+                    255,
+                    79,
+                    135,
+                    .06
+                );
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .add-box h3 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                35px;
+
+            margin-bottom:
+                8px;
+
+        }
+
+
+        .add-subtitle {
+
+            color:
+                #aaa;
+
+            font-size:
+                12px;
+
+            margin-bottom:
+                28px;
+
+        }
+
+
+        .theme-chips {
+
+            display:
+                flex;
+
+            gap:
+                10px;
+
+            margin-bottom:
+                30px;
+
+            flex-wrap:
+                wrap;
+
+        }
+
+
+        .theme-chip {
+
+            padding:
+                8px 13px;
+
+            border-radius:
+                50px;
+
+            font-size:
+                9px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1px;
+
+            font-weight:
+                600;
+
+        }
+
+
+        /* =================================================
+           MIKU — CIANO
+        ================================================= */
+
+        .miku-chip {
+
+            background:
+                rgba(
+                    57,
+                    217,
+                    208,
+                    .12
+                );
+
+            color:
+                var(--miku);
+
+            border:
+                1px solid
+                rgba(
+                    57,
+                    217,
+                    208,
+                    .18
+                );
+
+        }
+
+
+        /* =================================================
+           GHOSTFACE — SOMENTE PRETO E BRANCO
+        ================================================= */
+
+        .ghost-chip {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .10
+                );
+
+            color:
+                #ffffff;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .15
+                );
+
+        }
+
+
+        .heart-chip {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .08
+                );
+
+            color:
+                white;
+
+        }
+
+
+        .form-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                18px;
+
+        }
+
+
+        input,
+        textarea {
+
+            width:
+                100%;
+
+            border:
+                1px solid #333;
+
+            background:
+                #111;
+
+            color:
+                white;
+
+            padding:
+                16px;
+
+            border-radius:
+                12px;
+
+            outline:
+                none;
+
+            font-family:
+                'Montserrat',
+                sans-serif;
+
+        }
+
+
+        input::placeholder,
+        textarea::placeholder {
+
+            color:
+                #777;
+
+        }
+
+
+        input:focus,
+        textarea:focus {
+
+            border-color:
+                var(--pink);
+
+        }
+
+
+        textarea {
+
+            min-height:
+                140px;
+
+            resize:
+                vertical;
+
+            grid-column:
+                1 / -1;
+
+        }
+
+
+        .photo-input {
+
+            grid-column:
+                1 / -1;
+
+        }
+
+
+        .photo-input::file-selector-button {
+
+            border:
+                none;
+
+            background:
+                var(--pink);
+
+            color:
+                white;
+
+            padding:
+                10px 15px;
+
+            border-radius:
+                8px;
+
+            margin-right:
+                12px;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .button {
+
+            border:
+                none;
+
+            background:
+                var(--pink);
+
+            color:
+                white;
+
+            padding:
+                16px 30px;
+
+            border-radius:
+                50px;
+
+            cursor:
+                pointer;
+
+            font-family:
+                'Montserrat',
+                sans-serif;
+
+            font-weight:
+                600;
+
+            transition:
+                .3s;
+
+        }
+
+
+        .button:hover {
+
+            background:
+                white;
+
+            color:
+                black;
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        /* =================================================
+           GALERIA
+        ================================================= */
+
+        .gallery-header {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                end;
+
+            margin-bottom:
+                30px;
+
+        }
+
+
+        .gallery-header h3 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                35px;
+
+        }
+
+
+        .gallery-header span {
+
+            color:
+                var(--pink);
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                2px;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .gallery {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                25px;
+
+        }
+
+
+        .memory-card {
+
+            position:
+                relative;
+
+            background:
+                white;
+
+            border-radius:
+                20px;
+
+            overflow:
+                hidden;
+
+            box-shadow:
+                0 10px 35px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .08
+                );
+
+            transition:
+                .35s;
+
+        }
+
+
+        .memory-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .14
+                );
+
+        }
+
+
+        .memory-image {
+
+            width:
+                100%;
+
+            height:
+                270px;
+
+            object-fit:
+                cover;
+
+            display:
+                block;
+
+        }
+
+
+        .memory-theme {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            padding:
+                9px 15px;
+
+            /*
+              Base preta.
+              As referências individuais
+              ficam Miku = ciano e Ghostface
+              = branco.
+            */
+
+            background:
+                #080808;
+
+            color:
+                white;
+
+            font-size:
+                9px;
+
+            letter-spacing:
+                1px;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        /* =================================================
+           MIKU — CIANO
+        ================================================= */
+
+        .miku-reference {
+
+            color:
+                var(--miku);
+
+        }
+
+
+        /* =================================================
+           GHOSTFACE — PRETO E BRANCO
+           
+           Como o fundo da barra é preto,
+           a referência aparece em branco.
+        ================================================= */
+
+        .ghost-reference {
+
+            color:
+                #ffffff;
+
+        }
+
+
+        .memory-content {
+
+            padding:
+                22px;
+
+        }
+
+
+        .memory-date {
+
+            font-size:
+                9px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                2px;
+
+            color:
+                var(--pink);
+
+        }
+
+
+        .memory-title {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            color:
+                black;
+
+            font-size:
+                29px;
+
+            margin:
+                8px 0;
+
+        }
+
+
+        .memory-text {
+
+            font-size:
+                13px;
+
+            line-height:
+                1.7;
+
+            color:
+                #777;
+
+            white-space:
+                pre-line;
+
+        }
+
+
+        .delete-button {
+
+            border:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                #aaa;
+
+            cursor:
+                pointer;
+
+            margin-top:
+                15px;
+
+            font-size:
+                11px;
+
+        }
+
+
+        .delete-button:hover {
+
+            color:
+                var(--pink);
+
+        }
+
+
+        /* =================================================
+           FRASE FINAL
+        ================================================= */
+
+        .quote {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            background:
+                var(--black);
+
+            color:
+                white;
+
+            text-align:
+                center;
+
+            padding:
+                120px 20px;
+
+        }
+
+
+        .quote p {
+
+            max-width:
+                800px;
+
+            margin:
+                auto;
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    58px
+                );
+
+            line-height:
+                1.1;
+
+            font-style:
+                italic;
+
+        }
+
+
+        .quote span {
+
+            display:
+                block;
+
+            margin-top:
+                30px;
+
+            color:
+                var(--pink);
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                4px;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        /* =================================================
+           FOOTER
+        ================================================= */
+
+        footer {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            text-align:
+                center;
+
+            padding:
+                45px 20px;
+
+            background:
+                white;
+
+            color:
+                #888;
+
+            font-size:
+                11px;
+
+        }
+
+
+        footer strong {
+
+            color:
+                var(--pink);
+
+        }
+
+
+        /* =================================================
+           RESPONSIVO
+        ================================================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+
+                padding:
+                    15px 5%;
+
+            }
+
+
+            nav ul {
+
+                gap:
+                    12px;
+
+            }
+
+
+            nav a {
+
+                font-size:
+                    9px;
+
+            }
+
+
+            .logo {
+
+                font-size:
+                    25px;
+
+            }
+
+
+            .counter {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+            }
+
+
+            .counter-box:last-child {
+
+                grid-column:
+                    1 / -1;
+
+            }
+
+
+            .gallery {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .form-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            textarea,
+            .photo-input {
+
+                grid-column:
+                    auto;
+
+            }
+
+
+            .add-box {
+
+                padding:
+                    25px;
+
+            }
+
+
+            .section-title h2 {
+
+                font-size:
+                    43px;
+
+            }
+
+
+            .gallery-header {
+
+                display:
+                    block;
+
+            }
+
+
+            .gallery-header span {
+
+                display:
+                    block;
+
+                margin-top:
+                    8px;
+
+            }
+
+
+            .special-message {
+
+                font-size:
+                    13px;
+
+                line-height:
+                    1.8;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .music-player {
+
+                right:
+                    15px;
+
+                bottom:
+                    15px;
+
+            }
+
+
+            .music-text {
+
+                display:
+                    none;
+
+            }
+
+
+            .music-player {
+
+                padding:
+                    8px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         ABERTURA
+    =================================================== -->
+
+    <div
+        class="opening"
+        id="opening">
+
+        <div class="opening-content">
+
+
+            <!-- ==========================================
+                 ABERTURA NORMAL
+            =========================================== -->
+
+            <div id="normalOpening">
+
+                <div class="opening-heart">
+                    ♥
+                </div>
+
+                <div class="opening-small">
+                    uma história escrita a dois
+                </div>
+
+                <h1>
+                    Nossos<br>
+                    <span>momentos.</span>
+                </h1>
+
+                <p class="opening-date">
+                    Desde 24 de maio de 2025 🤍
+                </p>
+
+                <button
+                    class="open-button"
+                    onclick="openSite()">
+
+                    Abrir nossa história ♡
+
+                </button>
+
+            </div>
+
+
+            <!-- ==========================================
+                 MENSAGEM MENSAL
+            =========================================== -->
+
+            <div
+                id="monthlyOpening"
+                style="display: none;">
+
+                <div class="opening-heart">
+                    💗
+                </div>
+
+                <div class="opening-small">
+                    mais um mês com você
+                </div>
+
+                <h1>
+                    Mais um<br>
+                    <span id="monthlyTitle">
+                        mês juntos.
+                    </span>
+                </h1>
+
+                <p
+                    class="special-message"
+                    id="monthlyMessage">
+                </p>
+
+                <button
+                    class="open-button"
+                    onclick="openSite()">
+
+                    Continuar nossa história ♡
+
+                </button>
+
+            </div>
+
+
+            <!-- ==========================================
+                 ANIVERSÁRIO
+            =========================================== -->
+
+            <div
+                id="anniversaryOpening"
+                style="display: none;">
+
+                <div class="opening-heart">
+                    💗
+                </div>
+
+                <div class="opening-small">
+                    um capítulo muito especial
+                </div>
+
+                <h1>
+
+                    <span id="anniversaryYears">
+                        2 anos
+                    </span>
+
+                    de<br>
+
+                    <span>nós.</span>
+
+                </h1>
+
+                <p
+                    class="special-message"
+                    id="anniversaryMessage">
+                </p>
+
+                <button
+                    class="open-button"
+                    onclick="openSite()">
+
+                    Vamos continuar nossa história 🤍
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MÚSICA
+    =================================================== -->
+
+    <audio
+        id="backgroundMusic"
+        loop
+        preload="auto">
+
+        <source
+            src="pretty-please.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+    <div
+        class="music-player"
+        id="musicPlayer">
+
+        <div class="music-info">
+
+            <div class="music-disc">
+                ♫
+            </div>
+
+            <div class="music-text">
+
+                <strong>
+                    PRETTY PLEASE
+                </strong>
+
+                <span>
+                    Dutch Melrose • Benny Mayne
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="music-button"
+            id="musicButton"
+            onclick="toggleMusic()"
+            title="Tocar / pausar música">
+
+            ▶
+
+        </button>
+
+    </div>
+
+
+    <!-- ==================================================
+         CORAÇÕES
+    =================================================== -->
+
+    <div
+        class="hearts"
+        id="hearts">
+    </div>
+
+
+    <!-- ==================================================
+         NAV
+    =================================================== -->
+
+    <nav>
+
+        <div class="logo">
+
+            Nossos
+            <span>momentos</span>
+            🤍
+
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="#inicio">
+                    Início
+                </a>
+            </li>
+
+            <li>
+                <a href="#tempo">
+                    Nosso tempo
+                </a>
+            </li>
+
+            <li>
+                <a href="#momentos">
+                    Momentos
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ==================================================
+         HERO
+    =================================================== -->
+
+    <section
+        class="hero"
+        id="inicio">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                desde 24.05.2025
+            </div>
+
+
+            <h1>
+
+                Nossos<br>
+
+                <span>momentos.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Algumas histórias são feitas
+                para serem lembradas.
+
+                Esta é a nossa —
+                feita de pequenos momentos,
+                grandes sentimentos
+                e infinitos motivos para sorrir.
+
+            </p>
+
+
+            <div class="scroll">
+
+                ↓ &nbsp;
+                continue nossa história
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         CONTADOR
+    =================================================== -->
+
+    <section
+        class="counter-section"
+        id="tempo">
+
+        <div class="section-title">
+
+            <small>
+                Desde o nosso começo
+            </small>
+
+            <h2>
+                Quanto tempo estamos juntos?
+            </h2>
+
+        </div>
+
+
+        <div class="counter">
+
+
+            <div class="counter-box">
+
+                <span
+                    class="counter-number"
+                    id="years">
+                    0
+                </span>
+
+                <span class="counter-label">
+                    Anos
+                </span>
+
+            </div>
+
+
+            <div class="counter-box">
+
+                <span
+                    class="counter-number"
+                    id="days">
+                    0
+                </span>
+
+                <span class="counter-label">
+                    Dias
+                </span>
+
+            </div>
+
+
+            <div class="counter-box">
+
+                <span
+                    class="counter-number"
+                    id="hours">
+                    0
+                </span>
+
+                <span class="counter-label">
+                    Horas
+                </span>
+
+            </div>
+
+
+            <div class="counter-box">
+
+                <span
+                    class="counter-number"
+                    id="minutes">
+                    0
+                </span>
+
+                <span class="counter-label">
+                    Minutos
+                </span>
+
+            </div>
+
+
+            <div class="counter-box">
+
+                <span
+                    class="counter-number"
+                    id="seconds">
+                    0
+                </span>
+
+                <span class="counter-label">
+                    Segundos
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <p class="date-start">
+
+            Juntos desde
+
+            <strong>
+                24 de maio de 2025
+            </strong>
+
+            🤍
+
+        </p>
+
+    </section>
+
+
+    <!-- ==================================================
+         MOMENTOS
+    =================================================== -->
+
+    <section
+        class="moments"
+        id="momentos">
+
+        <div class="moments-container">
+
+
+            <div class="section-title">
+
+                <small>
+                    Nosso álbum
+                </small>
+
+                <h2>
+                    Momentos que queremos guardar
+                </h2>
+
+            </div>
+
+
+            <!-- ==========================================
+                 ADICIONAR MOMENTO
+            =========================================== -->
+
+            <div class="add-box">
+
+                <h3>
+                    Guardar um novo momento ✨
+                </h3>
+
+                <p class="add-subtitle">
+
+                    Um pedacinho da nossa história
+                    para guardar para sempre.
+
+                </p>
+
+
+                <div class="theme-chips">
+
+                    <div class="theme-chip miku-chip">
+                        ♫ Miku vibes
+                    </div>
+
+                    <div class="theme-chip ghost-chip">
+                        ♡ Ghostface
+                    </div>
+
+                    <div class="theme-chip heart-chip">
+                        ♥ Our memories
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Título do momento"
+                    >
+
+
+                    <input
+                        type="date"
+                        id="date"
+                    >
+
+
+                    <textarea
+                        id="description"
+                        placeholder="Conte um pouco sobre esse momento..."
+                    ></textarea>
+
+
+                    <input
+                        class="photo-input"
+                        type="file"
+                        id="photo"
+                        accept="image/*"
+                    >
+
+
+                    <button
+                        class="button"
+                        onclick="addMemory()">
+
+                        Guardar momento ❤️
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                 GALERIA
+            =========================================== -->
+
+            <div class="gallery-header">
+
+                <h3>
+                    Nossa galeria
+                </h3>
+
+                <span>
+                    ♡ miku × ghostface
+                </span>
+
+            </div>
+
+
+            <div
+                class="gallery"
+                id="gallery">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         FRASE FINAL
+    =================================================== -->
+
+    <section class="quote">
+
+        <p>
+
+            "Que a nossa história continue sendo
+            o meu lugar favorito no mundo."
+
+        </p>
+
+        <span>
+            Para sempre nós dois ♥
+        </span>
+
+    </section>
+
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+
+    <footer>
+
+        Feito com
+        <strong>♥</strong>
+        para a nossa história.
+
+    </footer>
+
+
+    <script>
+
+
+        /* =================================================
+           DATA INICIAL
+        ================================================= */
+
+        const startDate =
+            new Date(
+                2025,
+                4,
+                24,
+                0,
+                0,
+                0
+            );
+
+
+        /* =================================================
+           MÚSICA
+        ================================================= */
+
+        const music =
+            document.getElementById(
+                'backgroundMusic'
+            );
+
+
+        const musicButton =
+            document.getElementById(
+                'musicButton'
+            );
+
+
+        const musicPlayer =
+            document.getElementById(
+                'musicPlayer'
+            );
+
+
+        let musicPlaying =
+            false;
+
+
+        function updateMusicUI() {
+
+            if (
+                musicPlaying
+            ) {
+
+                musicButton.innerHTML =
+                    '❚❚';
+
+                musicPlayer.classList.add(
+                    'music-playing'
+                );
+
+            }
+
+            else {
+
+                musicButton.innerHTML =
+                    '▶';
+
+                musicPlayer.classList.remove(
+                    'music-playing'
+                );
+
+            }
+
+        }
+
+
+        function playMusic() {
+
+            music.volume =
+                0.45;
+
+
+            music.play()
+
+                .then(() => {
+
+                    musicPlaying =
+                        true;
+
+                    updateMusicUI();
+
+                })
+
+                .catch(() => {
+
+                    musicPlaying =
+                        false;
+
+                    updateMusicUI();
+
+                });
+
+        }
+
+
+        function pauseMusic() {
+
+            music.pause();
+
+            musicPlaying =
+                false;
+
+            updateMusicUI();
+
+        }
+
+
+        function toggleMusic() {
+
+            if (
+                music.paused
+            ) {
+
+                playMusic();
+
+            }
+
+            else {
+
+                pauseMusic();
+
+            }
+
+        }
+
+
+        window.addEventListener(
+            'load',
+            () => {
+
+                setTimeout(
+                    () => {
+
+                        playMusic();
+
+                    },
+                    800
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           ABRIR SITE
+        ================================================= */
+
+        function openSite() {
+
+            const opening =
+                document.getElementById(
+                    'opening'
+                );
+
+
+            opening.classList.add(
+                'hidden'
+            );
+
+
+            playMusic();
+
+        }
+
+
+        /* =================================================
+           CONTADOR
+        ================================================= */
+
+        function updateCounter() {
+
+            const now =
+                new Date();
+
+
+            let years =
+                now.getFullYear()
+                -
+                startDate.getFullYear();
+
+
+            let anniversary =
+                new Date(
+
+                    now.getFullYear(),
+
+                    startDate.getMonth(),
+
+                    startDate.getDate()
+
+                );
+
+
+            if (
+                now < anniversary
+            ) {
+
+                years--;
+
+            }
+
+
+            const referenceDate =
+                new Date(
+
+                    startDate.getFullYear()
+                    +
+                    years,
+
+                    startDate.getMonth(),
+
+                    startDate.getDate(),
+
+                    startDate.getHours(),
+
+                    startDate.getMinutes(),
+
+                    startDate.getSeconds()
+
+                );
+
+
+            let difference =
+                now -
+                referenceDate;
+
+
+            const day =
+                1000 *
+                60 *
+                60 *
+                24;
+
+
+            const hour =
+                1000 *
+                60 *
+                60;
+
+
+            const minute =
+                1000 *
+                60;
+
+
+            const days =
+                Math.floor(
+                    difference /
+                    day
+                );
+
+
+            difference %= day;
+
+
+            const hours =
+                Math.floor(
+                    difference /
+                    hour
+                );
+
+
+            difference %= hour;
+
+
+            const minutes =
+                Math.floor(
+                    difference /
+                    minute
+                );
+
+
+            difference %= minute;
+
+
+            const seconds =
+                Math.floor(
+                    difference /
+                    1000
+                );
+
+
+            document.getElementById(
+                'years'
+            ).textContent =
+                years;
+
+
+            document.getElementById(
+                'days'
+            ).textContent =
+                days;
+
+
+            document.getElementById(
+                'hours'
+            ).textContent =
+                String(hours)
+                .padStart(
+                    2,
+                    '0'
+                );
+
+
+            document.getElementById(
+                'minutes'
+            ).textContent =
+                String(minutes)
+                .padStart(
+                    2,
+                    '0'
+                );
+
+
+            document.getElementById(
+                'seconds'
+            ).textContent =
+                String(seconds)
+                .padStart(
+                    2,
+                    '0'
+                );
+
+        }
+
+
+        updateCounter();
+
+
+        setInterval(
+            updateCounter,
+            1000
+        );
+
+
+        /* =================================================
+           CORAÇÕES FLUTUANTES
+        ================================================= */
+
+        const hearts =
+            document.getElementById(
+                'hearts'
+            );
+
+
+        function createHeart() {
+
+            const heart =
+                document.createElement(
+                    'div'
+                );
+
+
+            heart.className =
+                'heart';
+
+
+            heart.innerHTML =
+                Math.random() > .5
+                ? '♥'
+                : '♡';
+
+
+            heart.style.left =
+                Math.random() *
+                100 +
+                '%';
+
+
+            heart.style.fontSize =
+                (
+                    12 +
+                    Math.random() *
+                    25
+                )
+                + 'px';
+
+
+            heart.style.animationDuration =
+                (
+                    8 +
+                    Math.random() *
+                    8
+                )
+                + 's';
+
+
+            heart.style.animationDelay =
+                Math.random() *
+                4
+                + 's';
+
+
+            hearts.appendChild(
+                heart
+            );
+
+
+            setTimeout(
+                () => heart.remove(),
+                17000
+            );
+
+        }
+
+
+        setInterval(
+            createHeart,
+            800
+        );
+
+
+        /* =================================================
+           MENSAGENS MENSAIS
+        ================================================= */
+
+        const monthlyMessages = {
+
+            1: {
+
+                title:
+                    "nosso primeiro mês.",
+
+                message:
+                    "Um mês pode parecer pouco para algumas pessoas, mas para mim já foi tempo suficiente para perceber o quanto é especial ter você comigo. Obrigado por cada conversa, cada risada e cada momento que já vivemos juntos. Que esse seja apenas o primeiro de muitos. 🤍"
+
+            },
+
+
+            2: {
+
+                title:
+                    "mais um mês de nós.",
+
+                message:
+                    "Mais um mês ao seu lado, e eu continuo descobrindo novos motivos para gostar ainda mais de você. Amo nossas conversas, nossas brincadeiras e simplesmente saber que tenho você comigo. Espero que a gente continue colecionando momentos assim por muito, muito tempo. 💗"
+
+            },
+
+
+            3: {
+
+                title:
+                    "três meses juntos.",
+
+                message:
+                    "Três meses da nossa história. Três meses de conversas, risadas, momentos inesperados e memórias que já guardo com muito carinho. Sou muito feliz por ter encontrado alguém como você e por poder chamar você de minha pessoa. 🤍"
+
+            },
+
+
+            4: {
+
+                title:
+                    "quatro meses de nós.",
+
+                message:
+                    "Mais um dia 24 chegou, e junto dele mais um motivo para agradecer por ter você na minha vida. Gosto de cada pequeno momento que temos juntos, até daqueles que parecem simples, porque quando é com você eles se tornam especiais. 💕"
+
+            },
+
+
+            5: {
+
+                title:
+                    "cinco meses juntos.",
+
+                message:
+                    "Cinco meses compartilhando uma parte da vida um com o outro. E se existe uma coisa que eu tenho certeza, é que ainda quero viver muitos momentos ao seu lado. Obrigado por ser você, por estar comigo e por fazer meus dias mais felizes. 🤍"
+
+            },
+
+
+            6: {
+
+                title:
+                    "seis meses de nós.",
+
+                message:
+                    "Hoje são seis meses. Meio ano de uma história que eu espero que dure por muito mais. Amo estar com você, conversar com você e simplesmente saber que existe alguém tão especial ao meu lado. Feliz mais um mês para nós. 💗"
+
+            },
+
+
+            7: {
+
+                title:
+                    "sete meses juntos.",
+
+                message:
+                    "Mais um mês passou e, de alguma forma, ainda parece que foi ontem que começamos tudo isso. Só que agora temos tantas memórias, tantas conversas e tantos momentos para chamar de nossos. E eu quero continuar aumentando essa coleção com você. 🤍"
+
+            },
+
+
+            8: {
+
+                title:
+                    "oito meses de nós.",
+
+                message:
+                    "Oito meses ao seu lado e eu continuo tendo aquele sentimento bom de saber que tenho uma pessoa incrível comigo. Obrigado por cada momento, por cada conversa e por fazer parte da minha vida de uma maneira tão especial. 💕"
+
+            },
+
+
+            9: {
+
+                title:
+                    "nove meses juntos.",
+
+                message:
+                    "Nove meses. E quanto mais tempo passa, mais eu percebo o quanto gosto de ter você comigo. Amo nossos momentos juntos, nossas calls, nossas conversas e todas as pequenas coisas que fazem nossa história ser só nossa. 🤍"
+
+            },
+
+
+            10: {
+
+                title:
+                    "dez meses de nós.",
+
+                message:
+                    "Dez meses juntos. Já são tantos momentos que guardo com carinho que fica difícil escolher apenas um para lembrar. Quero continuar vivendo tudo isso com você, seja em um evento, em uma call ou simplesmente conversando sobre qualquer coisa. 💗"
+
+            },
+
+
+            11: {
+
+                title:
+                    "onze meses juntos.",
+
+                message:
+                    "Falta tão pouco para completarmos nosso primeiro ano. E olhando para tudo que vivemos até aqui, só consigo sentir gratidão. Sou feliz por ter você comigo e espero que a gente continue escolhendo um ao outro em cada novo capítulo. 🤍"
+
+            }
+
+        };
+
+
+        /* =================================================
+           MENSAGENS APÓS 1 ANO
+        ================================================= */
+
+        const extraMessages = [
+
+            {
+
+                title:
+                    "mais um capítulo de nós.",
+
+                message:
+                    "Mais um dia 24 chegou. Mais um mês que podemos colocar na nossa história. E eu continuo feliz por ter você comigo, por compartilhar meus dias com você e por saber que ainda temos tantos momentos para viver juntos. 🤍"
+
+            },
+
+
+            {
+
+                title:
+                    "mais um mês ao seu lado.",
+
+                message:
+                    "O tempo continua passando, mas uma coisa continua igual: eu continuo feliz por ter você comigo. Que venham mais eventos, mais calls, mais risadas, mais conversas e muitos outros momentos que só nós dois vamos entender. 💗"
+
+            },
+
+
+            {
+
+                title:
+                    "nossa história continua.",
+
+                message:
+                    "Mais um mês da nossa história. Obrigado por continuar aqui, por compartilhar sua vida comigo e por fazer parte da minha. Quero continuar descobrindo novos lugares, vivendo novas experiências e criando novas lembranças ao seu lado. 🤍"
+
+            },
+
+
+            {
+
+                title:
+                    "ainda escolho você.",
+
+                message:
+                    "Mais um mês passou e eu continuo muito feliz por ter você na minha vida. Espero que nunca nos faltem motivos para conversar, rir, sair juntos, ficar em call e criar aquelas memórias que ficam guardadas para sempre. 💕"
+
+            },
+
+
+            {
+
+                title:
+                    "mais uma página.",
+
+                message:
+                    "Nossa história ganhou mais uma página hoje. E eu gosto de pensar que ainda temos um livro inteiro para escrever juntos, cheio de lugares para conhecer, momentos para viver e lembranças para guardar. 🤍"
+
+            }
+
+        ];
+
+
+        /* =================================================
+           ANIVERSÁRIO
+        ================================================= */
+
+        function getAnniversaryMessage(
+            years
+        ) {
+
+            if (
+                years === 2
+            ) {
+
+                return `
+
+                    Hoje não é apenas mais um dia 24.
+
+                    Hoje completamos
+                    <strong>2 anos juntos.</strong> 🤍
+
+                    Dois anos desde que a nossa história
+                    começou e, quando olho para tudo que
+                    vivemos até aqui, sinto uma felicidade
+                    enorme por ter você comigo.
+
+                    Eu adoro sair com você para os eventos,
+                    viver esses momentos ao seu lado,
+                    conhecer lugares, rir juntos e simplesmente
+                    aproveitar a companhia da pessoa que eu amo.
+
+                    Mas também amo aquelas coisas que podem
+                    parecer pequenas para outras pessoas,
+                    como ficar em call com você, conversar
+                    por horas, rir de coisas aleatórias,
+                    compartilhar o nosso dia e simplesmente
+                    ter você ali comigo.
+
+                    São esses pequenos momentos que fazem
+                    nossa história ser tão especial para mim.
+
+                    Eu me sinto muito especial por ter uma
+                    pessoa tão incrível comigo.
+
+                    Você se tornou alguém que eu quero
+                    continuar tendo ao meu lado nos momentos
+                    bons e também nos momentos difíceis.
+
+                    Sei que nem tudo na vida será perfeito.
+                    Sei que ainda teremos dias complicados,
+                    dificuldades e momentos em que as coisas
+                    talvez não sejam fáceis.
+
+                    Mas eu quero que a gente continue
+                    conversando, entendendo um ao outro,
+                    segurando a mão um do outro e enfrentando
+                    tudo que aparecer no nosso caminho.
+
+                    Porque eu acredito em nós.
+
+                    Quero que a gente supere tudo juntos,
+                    continue criando memórias,
+                    continue saindo juntos,
+                    continue ficando em call até perder
+                    a noção do tempo e continue encontrando
+                    motivos para sorrir um com o outro.
+
+                    Obrigado por esses dois anos.
+
+                    Obrigado por cada momento.
+
+                    Obrigado por ser você.
+
+                    E, principalmente,
+                    obrigado por estar comigo.
+
+                    Eu sou muito feliz por ter você
+                    e espero que esses dois anos sejam
+                    apenas mais um capítulo de uma história
+                    que ainda tem muito para acontecer.
+
+                    Que venham mais eventos,
+                    mais calls,
+                    mais risadas,
+                    mais fotos,
+                    mais aventuras,
+                    mais momentos simples
+                    e mais momentos inesquecíveis.
+
+                    <strong>
+                        Feliz 2 anos para nós. 🤍
+                    </strong>
+
+                `;
+
+            }
+
+
+            return `
+
+                Hoje completamos
+                <strong>${years} anos juntos.</strong> 🤍
+
+                Mais um aniversário da nossa história,
+                mais um capítulo que podemos guardar
+                para sempre.
+
+                Sou muito feliz por ter você comigo
+                e por tudo que ainda podemos viver
+                juntos.
+
+                Que continuemos criando memórias,
+                vivendo nossos momentos, saindo juntos,
+                ficando em call, rindo das coisas mais
+                aleatórias e enfrentando juntos tudo
+                que aparecer pelo caminho.
+
+                Obrigado por fazer parte da minha vida.
+
+                <strong>
+                    Feliz ${years} anos para nós. 💗
+                </strong>
+
+            `;
+
+        }
+
+
+        /* =================================================
+           VERIFICAR DIA 24
+        ================================================= */
+
+        function checkMonthlyMessage() {
+
+            const today =
+                new Date();
+
+
+            const day =
+                today.getDate();
+
+
+            if (
+                day !== 24
+            ) {
+
+                return;
+
+            }
+
+
+            let months =
+                (
+                    today.getFullYear()
+                    -
+                    startDate.getFullYear()
+                ) * 12
+                +
+                (
+                    today.getMonth()
+                    -
+                    startDate.getMonth()
+                );
+
+
+            if (
+                today.getDate()
+                <
+                startDate.getDate()
+            ) {
+
+                months--;
+
+            }
+
+
+            const normalOpening =
+                document.getElementById(
+                    'normalOpening'
+                );
+
+
+            const monthlyOpening =
+                document.getElementById(
+                    'monthlyOpening'
+                );
+
+
+            const anniversaryOpening =
+                document.getElementById(
+                    'anniversaryOpening'
+                );
+
+
+            normalOpening.style.display =
+                'none';
+
+            monthlyOpening.style.display =
+                'none';
+
+            anniversaryOpening.style.display =
+                'none';
+
+
+            /* =================================================
+               ANIVERSÁRIO ANUAL
+
+               24/05/2027 = 24 meses = 2 anos
+            ================================================= */
+
+            if (
+                months >= 24 &&
+                months % 12 === 0
+            ) {
+
+                const years =
+                    Math.floor(
+                        months / 12
+                    );
+
+
+                document.getElementById(
+                    'anniversaryYears'
+                ).textContent =
+                    `${years} anos`;
+
+
+                document.getElementById(
+                    'anniversaryMessage'
+                ).innerHTML =
+                    getAnniversaryMessage(
+                        years
+                    );
+
+
+                anniversaryOpening.style.display =
+                    'block';
+
+
+                return;
+
+            }
+
+
+            /* =================================================
+               MENSAGEM MENSAL
+            ================================================= */
+
+            let message;
+
+
+            if (
+                monthlyMessages[months]
+            ) {
+
+                message =
+                    monthlyMessages[
+                        months
+                    ];
+
+            }
+
+            else {
+
+                const index =
+                    (
+                        months - 13
+                    )
+                    %
+                    extraMessages.length;
+
+
+                message =
+                    extraMessages[
+                        index
+                    ];
+
+            }
+
+
+            document.getElementById(
+                'monthlyTitle'
+            ).textContent =
+                message.title;
+
+
+            document.getElementById(
+                'monthlyMessage'
+            ).innerHTML =
+                message.message;
+
+
+            monthlyOpening.style.display =
+                'block';
+
+        }
+
+
+        /* =================================================
+           MEMÓRIAS
+        ================================================= */
+
+        let memories =
+            JSON.parse(
+                localStorage.getItem(
+                    'ourMemories'
+                )
+            ) || [];
+
+
+        function saveMemories() {
+
+            localStorage.setItem(
+
+                'ourMemories',
+
+                JSON.stringify(
+                    memories
+                )
+
+            );
+
+        }
+
+
+        /* =================================================
+           ADICIONAR MEMÓRIA
+        ================================================= */
+
+        function addMemory() {
+
+            const title =
+                document.getElementById(
+                    'title'
+                ).value.trim();
+
+
+            const date =
+                document.getElementById(
+                    'date'
+                ).value;
+
+
+            const description =
+                document.getElementById(
+                    'description'
+                ).value.trim();
+
+
+            const photoInput =
+                document.getElementById(
+                    'photo'
+                );
+
+
+            if (
+                !title ||
+                !description
+            ) {
+
+                alert(
+                    'Preencha o título e a descrição ❤️'
+                );
+
+                return;
+
+            }
+
+
+            if (
+                photoInput.files.length
+                > 0
+            ) {
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function(event) {
+
+                        createMemory(
+
+                            title,
+
+                            date,
+
+                            description,
+
+                            event.target.result
+
+                        );
+
+                    };
+
+
+                reader.readAsDataURL(
+                    photoInput.files[0]
+                );
+
+            }
+
+            else {
+
+                createMemory(
+
+                    title,
+
+                    date,
+
+                    description,
+
+                    null
+
+                );
+
+            }
+
+        }
+
+
+        /* =================================================
+           CRIAR MEMÓRIA
+        ================================================= */
+
+        function createMemory(
+
+            title,
+
+            date,
+
+            description,
+
+            photo
+
+        ) {
+
+            const memory = {
+
+                id:
+                    Date.now(),
+
+                title:
+                    title,
+
+                date:
+                    date,
+
+                description:
+                    description,
+
+                photo:
+                    photo
+
+            };
+
+
+            memories.unshift(
+                memory
+            );
+
+
+            saveMemories();
+
+            renderMemories();
+
+
+            document.getElementById(
+                'title'
+            ).value =
+                '';
+
+
+            document.getElementById(
+                'date'
+            ).value =
+                '';
+
+
+            document.getElementById(
+                'description'
+            ).value =
+                '';
+
+
+            document.getElementById(
+                'photo'
+            ).value =
+                '';
+
+        }
+
+
+        /* =================================================
+           GALERIA
+        ================================================= */
+
+        function renderMemories() {
+
+            const gallery =
+                document.getElementById(
+                    'gallery'
+                );
+
+
+            gallery.innerHTML =
+                '';
+
+
+            if (
+                memories.length === 0
+            ) {
+
+                gallery.innerHTML = `
+
+                    <div
+                        style="
+                            grid-column:
+                                1 / -1;
+
+                            text-align:
+                                center;
+
+                            padding:
+                                80px 20px;
+
+                            background:
+                                white;
+
+                            border-radius:
+                                25px;
+
+                            border:
+                                1px dashed
+                                rgba(
+                                    255,
+                                    79,
+                                    135,
+                                    .25
+                                );
+                        "
+                    >
+
+                        <div
+                            style="
+                                font-size:
+                                    42px;
+
+                                margin-bottom:
+                                    15px;
+                            "
+                        >
+                            🎀 ♡ 👻
+                        </div>
+
+
+                        <h4
+                            style="
+                                font-family:
+                                    'Cormorant Garamond',
+                                    serif;
+
+                                font-size:
+                                    28px;
+
+                                margin-bottom:
+                                    8px;
+                            "
+                        >
+                            Nossa história começa aqui
+                        </h4>
+
+
+                        <p
+                            style="
+                                color:
+                                    #888;
+
+                                font-size:
+                                    12px;
+                            "
+                        >
+                            Adicione uma foto e conte
+                            sobre um momento especial.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            memories.forEach(
+                memory => {
+
+                    const card =
+                        document.createElement(
+                            'div'
+                        );
+
+
+                    card.className =
+                        'memory-card';
+
+
+                    let image;
+
+
+                    if (
+                        memory.photo
+                    ) {
+
+                        image = `
+
+                            <img
+                                class="memory-image"
+
+                                src="${memory.photo}"
+
+                                alt="${escapeHTML(
+                                    memory.title
+                                )}"
+                            >
+
+                        `;
+
+                    }
+
+                    else {
+
+                        image = `
+
+                            <div
+                                class="memory-image"
+
+                                style="
+                                    background:
+                                        linear-gradient(
+                                            135deg,
+                                            #ff4f87,
+                                            #080808
+                                        );
+
+                                    display:
+                                        flex;
+
+                                    align-items:
+                                        center;
+
+                                    justify-content:
+                                        center;
+
+                                    font-size:
+                                        55px;
+
+                                    color:
+                                        white;
+                                "
+                            >
+                                ♡
+                            </div>
+
+                        `;
+
+                    }
+
+
+                    const formattedDate =
+                        memory.date
+
+                        ?
+
+                        new Date(
+                            memory.date
+                            +
+                            'T00:00:00'
+                        ).toLocaleDateString(
+                            'pt-BR'
+                        )
+
+                        :
+
+                        'Um dia especial';
+
+
+                    card.innerHTML = `
+
+                        ${image}
+
+
+                        <div
+                            class="memory-theme"
+                        >
+
+                            <span
+                                class="miku-reference"
+                            >
+                                ♫ MIKU
+                            </span>
+
+
+                            <span>
+                                ♡
+                            </span>
+
+
+                            <span
+                                class="ghost-reference"
+                            >
+                                GHOSTFACE
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="memory-content"
+                        >
+
+                            <div
+                                class="memory-date"
+                            >
+                                ${formattedDate}
+                            </div>
+
+
+                            <div
+                                class="memory-title"
+                            >
+                                ${escapeHTML(
+                                    memory.title
+                                )}
+                            </div>
+
+
+                            <div
+                                class="memory-text"
+                            >
+                                ${escapeHTML(
+                                    memory.description
+                                )}
+                            </div>
+
+
+                            <button
+                                class="delete-button"
+
+                                onclick="
+                                    deleteMemory(
+                                        ${memory.id}
+                                    )
+                                "
+                            >
+                                Excluir momento
+                            </button>
+
+                        </div>
+
+                    `;
+
+
+                    gallery.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           EXCLUIR MEMÓRIA
+        ================================================= */
+
+        function deleteMemory(
+            id
+        ) {
+
+            if (
+                !confirm(
+                    'Deseja realmente excluir este momento?'
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            memories =
+                memories.filter(
+                    memory =>
+                        memory.id !== id
+                );
+
+
+            saveMemories();
+
+            renderMemories();
+
+        }
+
+
+        /* =================================================
+           SEGURANÇA
+        ================================================= */
+
+        function escapeHTML(
+            text
+        ) {
+
+            const div =
+                document.createElement(
+                    'div'
+                );
+
+
+            div.textContent =
+                text || '';
+
+
+            return div.innerHTML;
+
+        }
+
+
+        /* =================================================
+           INICIALIZAÇÃO
+        ================================================= */
+
+        checkMonthlyMessage();
+
+        renderMemories();
+
+    </script>
+
+</body>
+
+</html>
