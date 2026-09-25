@@ -763,6 +763,95 @@
         }
 
 
+        .music-volume {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 0 4px;
+
+        }
+
+
+        .music-volume-icon {
+
+            font-size: 13px;
+
+            color: #aaa;
+
+            width: 16px;
+
+            text-align: center;
+
+        }
+
+
+        .music-volume-slider {
+
+            width: 85px;
+
+            height: 4px;
+
+            accent-color: var(--pink);
+
+            cursor: pointer;
+
+        }
+
+
+        .music-volume-slider::-webkit-slider-runnable-track {
+
+            height: 4px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .music-volume-slider::-webkit-slider-thumb {
+
+            cursor: pointer;
+
+        }
+
+
+        .music-volume-slider::-moz-range-track {
+
+            height: 4px;
+
+            border-radius: 10px;
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .music-player {
+
+                right: 12px;
+
+                bottom: 12px;
+
+                gap: 8px;
+
+                padding: 8px;
+
+            }
+
+            .music-text {
+                display: none;
+            }
+
+            .music-volume-slider {
+                width: 70px;
+            }
+
+        }
+
+
         .music-button {
 
             width:
@@ -2168,12 +2257,196 @@
 
         }
 
+
+        /* =================================================
+           LOGIN — ACESSO RESTRITO
+        ================================================= */
+
+        .auth-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 20000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(
+                    circle at center,
+                    #1c1c1c 0%,
+                    #080808 75%
+                );
+        }
+
+        .auth-screen.hidden {
+            display: none;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 430px;
+            background: rgba(15, 15, 15, .96);
+            color: white;
+            border: 1px solid rgba(255, 79, 135, .24);
+            border-radius: 24px;
+            padding: 34px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, .45);
+            backdrop-filter: blur(18px);
+        }
+
+        .auth-heart {
+            text-align: center;
+            font-size: 54px;
+            color: var(--pink);
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 18px rgba(255, 79, 135, .35));
+        }
+
+        .auth-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .auth-subtitle {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            line-height: 1.7;
+            margin-bottom: 26px;
+        }
+
+        .auth-label {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #aaa;
+            margin: 0 0 8px;
+        }
+
+        .auth-input {
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .auth-button {
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .auth-error {
+            min-height: 18px;
+            margin-top: 14px;
+            text-align: center;
+            color: #ff8eae;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .auth-loading {
+            opacity: .65;
+            pointer-events: none;
+        }
+
+        .logout-button {
+            border: 1px solid rgba(0, 0, 0, .14);
+            background: rgba(255, 255, 255, .72);
+            color: #222;
+            border-radius: 50px;
+            padding: 9px 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .logout-button:hover {
+            background: var(--pink);
+            color: white;
+            border-color: var(--pink);
+        }
+
+        @media (max-width: 800px) {
+            .auth-card {
+                padding: 28px 22px;
+            }
+
+            .auth-card h2 {
+                font-size: 36px;
+            }
+        }
+
     </style>
 
 </head>
 
 
 <body>
+
+
+    <!-- ==================================================
+         LOGIN — SOMENTE DUAS CONTAS AUTORIZADAS
+    =================================================== -->
+
+    <div class="auth-screen" id="authScreen">
+
+        <div class="auth-card" id="authCard">
+
+            <div class="auth-heart">♥</div>
+
+            <h2>Nossos momentos</h2>
+
+            <p class="auth-subtitle">
+                Este espaço é privado e está disponível
+                somente para nós dois. 🤍
+            </p>
+
+            <form id="loginForm">
+
+                <label class="auth-label" for="loginEmail">
+                    E-mail
+                </label>
+
+                <input
+                    class="auth-input"
+                    type="email"
+                    id="loginEmail"
+                    autocomplete="email"
+                    placeholder="Seu e-mail"
+                    required
+                >
+
+                <label class="auth-label" for="loginPassword">
+                    Senha
+                </label>
+
+                <input
+                    class="auth-input"
+                    type="password"
+                    id="loginPassword"
+                    autocomplete="current-password"
+                    placeholder="Sua senha"
+                    required
+                >
+
+                <button
+                    class="button auth-button"
+                    id="loginButton"
+                    type="submit"
+                >
+                    Entrar ♡
+                </button>
+
+                <div class="auth-error" id="authError"></div>
+
+            </form>
+
+        </div>
+
+    </div>
 
 
     <!-- ==================================================
@@ -2349,6 +2622,27 @@
         </div>
 
 
+        <div
+            class="music-volume"
+            title="Volume da música">
+
+            <span
+                class="music-volume-icon"
+                id="musicVolumeIcon">🔊</span>
+
+            <input
+                class="music-volume-slider"
+                id="musicVolume"
+                type="range"
+                min="0"
+                max="100"
+                value="25"
+                step="1"
+                aria-label="Volume da música">
+
+        </div>
+
+
         <button
             class="music-button"
             id="musicButton"
@@ -2408,6 +2702,13 @@
             </li>
 
         </ul>
+
+        <button
+            class="logout-button"
+            type="button"
+            onclick="logout()">
+            Sair
+        </button>
 
     </nav>
 
@@ -2739,7 +3040,26 @@
     </footer>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
+
+
+        /* =================================================
+           SUPABASE
+        ================================================= */
+
+        const SUPABASE_URL =
+            'https://wrkoclggmyscjphhyxzv.supabase.co';
+
+        const SUPABASE_ANON_KEY =
+            'sb_publishable_wMHvIscvjIZRDfZsePtxWg_TaTo0Y78';
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
+            );
 
 
         /* =================================================
@@ -2779,8 +3099,82 @@
             );
 
 
+        const musicVolume =
+            document.getElementById(
+                'musicVolume'
+            );
+
+
+        const musicVolumeIcon =
+            document.getElementById(
+                'musicVolumeIcon'
+            );
+
+
         let musicPlaying =
             false;
+
+
+        const savedVolume =
+            localStorage.getItem('musicVolume');
+
+
+        if (savedVolume !== null) {
+
+            const parsedVolume =
+                Number(savedVolume);
+
+            if (Number.isFinite(parsedVolume)) {
+                musicVolume.value =
+                    String(
+                        Math.min(100, Math.max(0, parsedVolume))
+                    );
+            }
+
+        }
+
+
+        function updateMusicVolume() {
+
+            const value =
+                Number(musicVolume.value);
+
+            music.volume =
+                value / 100;
+
+            localStorage.setItem(
+                'musicVolume',
+                String(value)
+            );
+
+            if (value === 0) {
+
+                musicVolumeIcon.textContent = '🔇';
+
+            }
+
+            else if (value < 50) {
+
+                musicVolumeIcon.textContent = '🔉';
+
+            }
+
+            else {
+
+                musicVolumeIcon.textContent = '🔊';
+
+            }
+
+        }
+
+
+        musicVolume.addEventListener(
+            'input',
+            updateMusicVolume
+        );
+
+
+        updateMusicVolume();
 
 
         function updateMusicUI() {
@@ -2814,9 +3208,7 @@
 
         function playMusic() {
 
-            music.volume =
-                0.45;
-
+            updateMusicVolume();
 
             music.play()
 
@@ -3647,28 +4039,352 @@
 
 
         /* =================================================
-           MEMÓRIAS
+           MEMÓRIAS + AUTENTICAÇÃO + SUPABASE
         ================================================= */
 
-        let memories =
-            JSON.parse(
-                localStorage.getItem(
-                    'ourMemories'
-                )
-            ) || [];
+        const AUTHORIZED_USER_IDS = new Set([
+            'afa12188-a150-43a4-b882-8544ab92e9c9',
+            '267839f3-3550-4e65-9269-1b7974cb2b65'
+        ]);
+
+        let memories = [];
+        let currentSession = null;
 
 
-        function saveMemories() {
+        /* =================================================
+           AUTENTICAÇÃO
+        ================================================= */
 
-            localStorage.setItem(
+        function showAuthScreen(message = '') {
 
-                'ourMemories',
+            const screen =
+                document.getElementById('authScreen');
 
-                JSON.stringify(
-                    memories
-                )
+            const error =
+                document.getElementById('authError');
 
+            if (screen) {
+                screen.classList.remove('hidden');
+            }
+
+            if (error) {
+                error.textContent = message;
+            }
+
+        }
+
+
+        function hideAuthScreen() {
+
+            const screen =
+                document.getElementById('authScreen');
+
+            if (screen) {
+                screen.classList.add('hidden');
+            }
+
+        }
+
+
+        function isAuthorizedUser(user) {
+
+            return Boolean(
+                user &&
+                AUTHORIZED_USER_IDS.has(user.id)
             );
+
+        }
+
+
+        async function signIn(email, password) {
+
+            const {
+                data,
+                error
+            } = await supabaseClient.auth.signInWithPassword({
+                email,
+                password
+            });
+
+            if (error) {
+                throw error;
+            }
+
+            if (!isAuthorizedUser(data.user)) {
+
+                await supabaseClient.auth.signOut();
+
+                throw new Error(
+                    'Esta conta não possui autorização para acessar este site.'
+                );
+
+            }
+
+            currentSession = data.session;
+
+            return data.session;
+
+        }
+
+
+        async function logout() {
+
+            const {
+                error
+            } = await supabaseClient.auth.signOut();
+
+            if (error) {
+                console.error('Erro ao sair:', error);
+                return;
+            }
+
+            currentSession = null;
+            memories = [];
+
+            document.getElementById('gallery').innerHTML = '';
+            showAuthScreen();
+
+        }
+
+
+        async function initializeAuth() {
+
+            showAuthScreen();
+
+            const {
+                data: { session }
+            } = await supabaseClient.auth.getSession();
+
+            if (!session || !isAuthorizedUser(session.user)) {
+
+                if (session) {
+                    await supabaseClient.auth.signOut();
+                }
+
+                currentSession = null;
+                return false;
+
+            }
+
+            currentSession = session;
+            hideAuthScreen();
+
+            await loadMemories();
+
+            return true;
+
+        }
+
+
+        document
+            .getElementById('loginForm')
+            .addEventListener('submit', async event => {
+
+                event.preventDefault();
+
+                const email =
+                    document
+                        .getElementById('loginEmail')
+                        .value
+                        .trim();
+
+                const password =
+                    document
+                        .getElementById('loginPassword')
+                        .value;
+
+                const button =
+                    document.getElementById('loginButton');
+
+                const card =
+                    document.getElementById('authCard');
+
+                const errorBox =
+                    document.getElementById('authError');
+
+                errorBox.textContent = '';
+                button.disabled = true;
+                button.textContent = 'Entrando...';
+                card.classList.add('auth-loading');
+
+                try {
+
+                    await signIn(email, password);
+
+                    document
+                        .getElementById('loginPassword')
+                        .value = '';
+
+                    hideAuthScreen();
+                    await loadMemories();
+
+                }
+                catch (error) {
+
+                    console.error('Erro no login:', error);
+
+                    errorBox.textContent =
+                        error?.message?.includes('autorização')
+                            ? error.message
+                            : 'E-mail ou senha inválidos.';
+
+                }
+                finally {
+
+                    button.disabled = false;
+                    button.textContent = 'Entrar ♡';
+                    card.classList.remove('auth-loading');
+
+                }
+
+            });
+
+
+        supabaseClient.auth.onAuthStateChange(
+            async (_event, session) => {
+
+                if (!session) {
+                    currentSession = null;
+                    showAuthScreen();
+                    return;
+                }
+
+                if (!isAuthorizedUser(session.user)) {
+                    await supabaseClient.auth.signOut();
+                    return;
+                }
+
+                currentSession = session;
+                hideAuthScreen();
+
+            }
+        );
+
+
+        /* =================================================
+           STORAGE — UPLOAD
+        ================================================= */
+
+        async function uploadPhoto(file, userId) {
+
+            if (!file) {
+                return null;
+            }
+
+            if (!currentSession || !isAuthorizedUser(currentSession.user)) {
+                throw new Error('Usuário não autorizado.');
+            }
+
+            if (!file.type.startsWith('image/')) {
+                throw new Error('Selecione apenas uma imagem.');
+            }
+
+            const maxSize = 50 * 1024 * 1024;
+
+            if (file.size > maxSize) {
+                throw new Error('A imagem ultrapassa o limite de 50 MB.');
+            }
+
+            const extension =
+                file.name.includes('.')
+                    ? file.name
+                        .split('.')
+                        .pop()
+                        .toLowerCase()
+                    : 'jpg';
+
+            const safeName =
+                file.name
+                    .replace(/[^a-zA-Z0-9._-]/g, '_');
+
+            const filePath =
+                'private/' +
+                userId +
+                '/' +
+                crypto.randomUUID() +
+                '-' +
+                safeName;
+
+            const {
+                error
+            } = await supabaseClient
+                .storage
+                .from('fotos')
+                .upload(
+                    filePath,
+                    file,
+                    {
+                        cacheControl: '3600',
+                        upsert: false,
+                        contentType:
+                            file.type ||
+                            `image/${extension}`
+                    }
+                );
+
+            if (error) {
+                console.error('Erro ao enviar foto:', error);
+                throw error;
+            }
+
+            return filePath;
+
+        }
+
+
+        async function getPhotoUrl(filePath) {
+
+            if (!filePath) {
+                return null;
+            }
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .storage
+                .from('fotos')
+                .createSignedUrl(
+                    filePath,
+                    60 * 60 * 24
+                );
+
+            if (error) {
+                console.error('Erro ao gerar URL da foto:', error);
+                return null;
+            }
+
+            return data.signedUrl;
+
+        }
+
+
+        /* =================================================
+           BANCO — CARREGAR
+        ================================================= */
+
+        async function loadMemories() {
+
+            if (!currentSession || !isAuthorizedUser(currentSession.user)) {
+                return;
+            }
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .from('fotos')
+                .select('id, created_at, user_id, nome, url, data, descricao')
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                console.error('Erro ao carregar momentos:', error);
+                alert('Não foi possível carregar os momentos.');
+                return;
+            }
+
+            memories = data || [];
+            await renderMemories();
 
         }
 
@@ -3677,166 +4393,115 @@
            ADICIONAR MEMÓRIA
         ================================================= */
 
-        function addMemory() {
+        async function addMemory() {
+
+            if (!currentSession || !isAuthorizedUser(currentSession.user)) {
+                showAuthScreen('Faça login para continuar.');
+                return;
+            }
 
             const title =
-                document.getElementById(
-                    'title'
-                ).value.trim();
-
+                document.getElementById('title').value.trim();
 
             const date =
-                document.getElementById(
-                    'date'
-                ).value;
-
+                document.getElementById('date').value;
 
             const description =
-                document.getElementById(
-                    'description'
-                ).value.trim();
-
+                document.getElementById('description').value.trim();
 
             const photoInput =
-                document.getElementById(
-                    'photo'
-                );
+                document.getElementById('photo');
 
+            if (!title || !description) {
 
-            if (
-                !title ||
-                !description
-            ) {
-
-                alert(
-                    'Preencha o título e a descrição ❤️'
-                );
-
+                alert('Preencha o título e a descrição ❤️');
                 return;
 
             }
 
+            const button =
+                document.querySelector('button[onclick="addMemory()"]');
 
-            if (
-                photoInput.files.length
-                > 0
-            ) {
+            const originalText =
+                button ? button.textContent : '';
 
-                const reader =
-                    new FileReader();
+            let photoPath = null;
 
+            try {
 
-                reader.onload =
-                    function(event) {
+                if (button) {
+                    button.disabled = true;
+                    button.textContent = 'Salvando momento...';
+                }
 
-                        createMemory(
-
-                            title,
-
-                            date,
-
-                            description,
-
-                            event.target.result
-
+                if (photoInput.files.length > 0) {
+                    photoPath =
+                        await uploadPhoto(
+                            photoInput.files[0],
+                            currentSession.user.id
                         );
+                }
 
-                    };
+                const memory = {
+                    id: Date.now(),
+                    user_id: currentSession.user.id,
+                    nome: title,
+                    url: photoPath,
+                    data: date || null,
+                    descricao: description
+                };
 
+                const {
+                    data,
+                    error
+                } = await supabaseClient
+                    .from('fotos')
+                    .insert(memory)
+                    .select('id, created_at, user_id, nome, url, data, descricao')
+                    .single();
 
-                reader.readAsDataURL(
-                    photoInput.files[0]
+                if (error) {
+
+                    if (photoPath) {
+                        await supabaseClient
+                            .storage
+                            .from('fotos')
+                            .remove([photoPath]);
+                    }
+
+                    throw error;
+
+                }
+
+                memories.unshift(data);
+                await renderMemories();
+
+                document.getElementById('title').value = '';
+                document.getElementById('date').value = '';
+                document.getElementById('description').value = '';
+                document.getElementById('photo').value = '';
+
+            }
+            catch (error) {
+
+                console.error('Erro ao salvar momento:', error);
+
+                alert(
+                    error?.message ||
+                    'Não foi possível salvar o momento.'
                 );
 
             }
+            finally {
 
-            else {
-
-                createMemory(
-
-                    title,
-
-                    date,
-
-                    description,
-
-                    null
-
-                );
+                if (button) {
+                    button.disabled = false;
+                    button.textContent =
+                        originalText ||
+                        'Guardar momento ❤️';
+                }
 
             }
-
-        }
-
-
-        /* =================================================
-           CRIAR MEMÓRIA
-        ================================================= */
-
-        function createMemory(
-
-            title,
-
-            date,
-
-            description,
-
-            photo
-
-        ) {
-
-            const memory = {
-
-                id:
-                    Date.now(),
-
-                title:
-                    title,
-
-                date:
-                    date,
-
-                description:
-                    description,
-
-                photo:
-                    photo
-
-            };
-
-
-            memories.unshift(
-                memory
-            );
-
-
-            saveMemories();
-
-            renderMemories();
-
-
-            document.getElementById(
-                'title'
-            ).value =
-                '';
-
-
-            document.getElementById(
-                'date'
-            ).value =
-                '';
-
-
-            document.getElementById(
-                'description'
-            ).value =
-                '';
-
-
-            document.getElementById(
-                'photo'
-            ).value =
-                '';
 
         }
 
@@ -3845,93 +4510,53 @@
            GALERIA
         ================================================= */
 
-        function renderMemories() {
+        async function renderMemories() {
 
             const gallery =
-                document.getElementById(
-                    'gallery'
-                );
+                document.getElementById('gallery');
 
+            gallery.innerHTML = '';
 
-            gallery.innerHTML =
-                '';
-
-
-            if (
-                memories.length === 0
-            ) {
+            if (memories.length === 0) {
 
                 gallery.innerHTML = `
 
                     <div
                         style="
-                            grid-column:
-                                1 / -1;
-
-                            text-align:
-                                center;
-
-                            padding:
-                                80px 20px;
-
-                            background:
-                                white;
-
-                            border-radius:
-                                25px;
-
-                            border:
-                                1px dashed
-                                rgba(
-                                    255,
-                                    79,
-                                    135,
-                                    .25
-                                );
+                            grid-column: 1 / -1;
+                            text-align: center;
+                            padding: 80px 20px;
+                            background: white;
+                            border-radius: 25px;
+                            border: 1px dashed rgba(255, 79, 135, .25);
                         "
                     >
-
                         <div
                             style="
-                                font-size:
-                                    42px;
-
-                                margin-bottom:
-                                    15px;
+                                font-size: 42px;
+                                margin-bottom: 15px;
                             "
                         >
                             🎀 ♡ 👻
                         </div>
 
-
                         <h4
                             style="
-                                font-family:
-                                    'Cormorant Garamond',
-                                    serif;
-
-                                font-size:
-                                    28px;
-
-                                margin-bottom:
-                                    8px;
+                                font-family: 'Cormorant Garamond', serif;
+                                font-size: 28px;
+                                margin-bottom: 8px;
                             "
                         >
                             Nossa história começa aqui
                         </h4>
 
-
                         <p
                             style="
-                                color:
-                                    #888;
-
-                                font-size:
-                                    12px;
+                                color: #888;
+                                font-size: 12px;
                             "
                         >
-                            Adicione uma foto e conte
-                            sobre um momento especial.
+                            Adicione uma foto e conte sobre um momento especial.
                         </p>
 
                     </div>
@@ -3942,182 +4567,114 @@
 
             }
 
+            for (const memory of memories) {
 
-            memories.forEach(
-                memory => {
+                const card =
+                    document.createElement('div');
 
-                    const card =
-                        document.createElement(
-                            'div'
-                        );
+                card.className = 'memory-card';
 
+                let image;
 
-                    card.className =
-                        'memory-card';
+                if (memory.url) {
 
+                    const photoUrl =
+                        await getPhotoUrl(memory.url);
 
-                    let image;
-
-
-                    if (
-                        memory.photo
-                    ) {
+                    if (photoUrl) {
 
                         image = `
-
                             <img
                                 class="memory-image"
-
-                                src="${memory.photo}"
-
-                                alt="${escapeHTML(
-                                    memory.title
-                                )}"
+                                src="${photoUrl}"
+                                alt="${escapeHTML(memory.nome)}"
+                                loading="lazy"
                             >
-
                         `;
 
                     }
-
                     else {
 
                         image = `
-
                             <div
                                 class="memory-image"
-
                                 style="
-                                    background:
-                                        linear-gradient(
-                                            135deg,
-                                            #ff4f87,
-                                            #080808
-                                        );
-
-                                    display:
-                                        flex;
-
-                                    align-items:
-                                        center;
-
-                                    justify-content:
-                                        center;
-
-                                    font-size:
-                                        55px;
-
-                                    color:
-                                        white;
+                                    background: linear-gradient(135deg, #ff4f87, #080808);
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    font-size:55px;
+                                    color:white;
                                 "
-                            >
-                                ♡
-                            </div>
-
+                            >♡</div>
                         `;
 
                     }
 
+                }
+                else {
 
-                    const formattedDate =
-                        memory.date
-
-                        ?
-
-                        new Date(
-                            memory.date
-                            +
-                            'T00:00:00'
-                        ).toLocaleDateString(
-                            'pt-BR'
-                        )
-
-                        :
-
-                        'Um dia especial';
-
-
-                    card.innerHTML = `
-
-                        ${image}
-
-
+                    image = `
                         <div
-                            class="memory-theme"
-                        >
-
-                            <span
-                                class="miku-reference"
-                            >
-                                ♫ MIKU
-                            </span>
-
-
-                            <span>
-                                ♡
-                            </span>
-
-
-                            <span
-                                class="ghost-reference"
-                            >
-                                GHOSTFACE
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="memory-content"
-                        >
-
-                            <div
-                                class="memory-date"
-                            >
-                                ${formattedDate}
-                            </div>
-
-
-                            <div
-                                class="memory-title"
-                            >
-                                ${escapeHTML(
-                                    memory.title
-                                )}
-                            </div>
-
-
-                            <div
-                                class="memory-text"
-                            >
-                                ${escapeHTML(
-                                    memory.description
-                                )}
-                            </div>
-
-
-                            <button
-                                class="delete-button"
-
-                                onclick="
-                                    deleteMemory(
-                                        ${memory.id}
-                                    )
-                                "
-                            >
-                                Excluir momento
-                            </button>
-
-                        </div>
-
+                            class="memory-image"
+                            style="
+                                background: linear-gradient(135deg, #ff4f87, #080808);
+                                display:flex;
+                                align-items:center;
+                                justify-content:center;
+                                font-size:55px;
+                                color:white;
+                            "
+                        >♡</div>
                     `;
 
-
-                    gallery.appendChild(
-                        card
-                    );
-
                 }
-            );
+
+                const formattedDate =
+                    memory.data
+                        ? new Date(
+                            memory.data + 'T00:00:00'
+                        ).toLocaleDateString('pt-BR')
+                        : 'Um dia especial';
+
+                card.innerHTML = `
+
+                    ${image}
+
+                    <div class="memory-theme">
+                        <span class="miku-reference">♫ MIKU</span>
+                        <span>♡</span>
+                        <span class="ghost-reference">GHOSTFACE</span>
+                    </div>
+
+                    <div class="memory-content">
+
+                        <div class="memory-date">
+                            ${formattedDate}
+                        </div>
+
+                        <div class="memory-title">
+                            ${escapeHTML(memory.nome)}
+                        </div>
+
+                        <div class="memory-text">
+                            ${escapeHTML(memory.descricao)}
+                        </div>
+
+                        <button
+                            class="delete-button"
+                            onclick="deleteMemory(${memory.id})"
+                        >
+                            Excluir momento
+                        </button>
+
+                    </div>
+
+                `;
+
+                gallery.appendChild(card);
+
+            }
 
         }
 
@@ -4126,31 +4683,64 @@
            EXCLUIR MEMÓRIA
         ================================================= */
 
-        function deleteMemory(
-            id
-        ) {
+        async function deleteMemory(id) {
 
-            if (
-                !confirm(
-                    'Deseja realmente excluir este momento?'
-                )
-            ) {
-
+            if (!currentSession || !isAuthorizedUser(currentSession.user)) {
+                showAuthScreen('Faça login para continuar.');
                 return;
-
             }
 
+            if (!confirm('Deseja realmente excluir este momento?')) {
+                return;
+            }
 
-            memories =
-                memories.filter(
-                    memory =>
-                        memory.id !== id
+            const memory =
+                memories.find(item => item.id === id);
+
+            try {
+
+                if (memory?.url) {
+
+                    const {
+                        error: storageError
+                    } = await supabaseClient
+                        .storage
+                        .from('fotos')
+                        .remove([memory.url]);
+
+                    if (storageError) {
+                        throw storageError;
+                    }
+
+                }
+
+                const {
+                    error: databaseError
+                } = await supabaseClient
+                    .from('fotos')
+                    .delete()
+                    .eq('id', id);
+
+                if (databaseError) {
+                    throw databaseError;
+                }
+
+                memories =
+                    memories.filter(item => item.id !== id);
+
+                await renderMemories();
+
+            }
+            catch (error) {
+
+                console.error('Erro ao excluir memória:', error);
+
+                alert(
+                    error?.message ||
+                    'Não foi possível excluir o momento.'
                 );
 
-
-            saveMemories();
-
-            renderMemories();
+            }
 
         }
 
@@ -4159,19 +4749,12 @@
            SEGURANÇA
         ================================================= */
 
-        function escapeHTML(
-            text
-        ) {
+        function escapeHTML(text) {
 
             const div =
-                document.createElement(
-                    'div'
-                );
+                document.createElement('div');
 
-
-            div.textContent =
-                text || '';
-
+            div.textContent = text || '';
 
             return div.innerHTML;
 
@@ -4184,7 +4767,17 @@
 
         checkMonthlyMessage();
 
-        renderMemories();
+        initializeAuth()
+            .catch(error => {
+
+                console.error('Erro ao inicializar autenticação:', error);
+
+                showAuthScreen(
+                    'Não foi possível conectar ao sistema de login.'
+                );
+
+            });
+
 
     </script>
 
